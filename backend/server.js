@@ -27,3 +27,23 @@ const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
     console.log(`Server in ascolto sulla porta ${PORT}`)
 })
+
+const userSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+})
+
+module.exports = mongoose.model('User', userSchema)
+
+app.post('/submit-data', async (req, res) => {
+    try {
+        const newUser = new User({ email: req.body.email })
+        await newUser.save()
+        res.status(201).json({ message: 'Utente creato con successo' })
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+})
