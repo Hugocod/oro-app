@@ -2,9 +2,9 @@
     <form>
         <div>
             <label for="UserEmail" class="block text-xs font-medium text-gray-700"> Email </label>
-            <input type="text" v-model="data" id="UserEmail" placeholder="john@rhcp.com" class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm" />
+            <input type="text" v-model="dataEmail" id="UserEmail" placeholder="john@rhcp.com" class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm" />
         </div>
-        <button @submit="submitValue">submit</button>
+        <button @submit.prevent="submitValue">submit</button>
     </form>
 </template>
 
