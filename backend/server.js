@@ -36,8 +36,9 @@ app.post('/submit-data', async (req, res) => {
         const newUser = new User({ email: req.body.email })
         await newUser.save()
         res.status(201).json({ message: 'Utente creato con successo' })
+        console.log('scritto dato')
     } catch (error) {
-        res.status(500).json({ error: error.message })
+        res.status(500).json({ error: error.message }), console.log('Non scritto')
     }
 })
 
